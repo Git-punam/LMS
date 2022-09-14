@@ -1,0 +1,66 @@
+/////////////////////////signup API/////////////////
+POST http://localhost:4000/api/admin/signup
+Content-Type: application/json
+
+{
+    "name" : "hello world",
+    "username" : "heyworld",
+    "password" : "heyhello",
+    "email" : "hello@world.com"
+}
+
+###
+
+POST http://localhost:4000/api/admin/signup
+Content-Type: application/json
+
+{
+    "name" : "book book",
+    "username" : "allbook",
+    "password" : "bookdetails",
+    "email" : "book@details.com"
+}
+
+###
+
+//////////////////////////////////login API//////////////////////////////////////
+POST http://localhost:4000/api/admin/login
+Content-Type: application/json
+
+{
+    "username" : "heyworld",
+    "password" : "heyhello"
+}
+
+###
+
+
+///////////////////////////////////add new book details////////////////////////////
+POST http://localhost:4000/api/admin/add-new-book
+Content-Type: application/json
+
+{
+  "Title": "Programming in C++",
+  "Stock": 50,
+  "Issue_date":"14-09-2022"
+}
+
+###
+
+/////////////////////update book dtails//////////////////////////////////
+PUT http://localhost:4000/api/admin/update-old-book/6320977df858993234713d15
+Content-Type: application/json
+
+{
+  "Stock":49,
+  "Issue_date": "13-09-2022"
+}
+
+###
+
+//////////////////delete boo details/////////////////////
+
+DELETE http://localhost:4000/api/admin/delete-book/6320a5730d0ebc30142b45b0
+Content-Type: application/json
+
+###

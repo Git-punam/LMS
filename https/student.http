@@ -1,0 +1,64 @@
+//////////////////////////////view all book details///////////////////////////
+GET http://localhost:4000/api/student/view-all-books
+Content-Type: application/json
+
+
+###
+
+////////////////////view books by genre/////////////////////////////
+GET http://localhost:4000/api/student/view-selected-book-genre/science
+Content-Type: application/json
+
+
+###
+
+////////////////////view books by subgenre/////////////////////////////
+GET http://localhost:4000/api/student/view-selected-book-subgenre/economics
+Content-Type: application/json
+
+###
+
+////////////////////view books by publisher/////////////////////////////
+GET http://localhost:4000/api/student/view-selected-book-publisher/Penguin
+Content-Type: application/json
+
+
+###
+
+////////////////////////////add new book details/////////////////////////////
+POST http://localhost:4000/api/add-new-book
+Content-Type: application/json
+
+{
+  "Title": "Programming Collective Intelligence",
+  "Author": "Toby Segaran",
+  "Genre": "tech",
+  "SubGenre": " ",
+  "Height": "",
+  "Publisher": "O'Reilly Media, Inc."
+}
+
+###
+
+
+/////////////////////////////view book details selected by ID/////////////////////
+GET http://localhost:4000/api/view-selected-book/631b938ec6c691206a4c4bc1
+Content-Type: application/json
+
+###
+
+//////////////////////update old book details selected by ID/////////////////////
+PUT http://localhost:4000/api/update-old-book/631c0b4f0151d19acc0eae77
+Content-Type: application/json
+
+{
+    "SubGenre" : "machine learning"
+}
+
+###
+
+////////////////////delete a book selected by ID/////////////////////////////////
+DELETE http://localhost:4000/api/delete-book/631c1e90ddec4ae79e0b622e
+Content-Type: application/json
+
+###
