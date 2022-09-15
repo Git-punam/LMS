@@ -2,9 +2,11 @@ import {studentModel, bookModel} from '../models/dbModels.js'
 import { generateTokenStudent } from '../utils/generateToken.js'
 
 
+
 /////////////////////signup logic/////////////////////////////////////////////
 export const studentSignUp = async(req,res)=>{
     const {name, username, password, email, stream, year, roll} = req.body
+    console.log(req.body);
         try{
         const newStudent = new studentModel({
             name, username, password, email, stream, year, roll
@@ -175,4 +177,38 @@ catch(error){
         messgae : error.message
     })
     }
+}
+
+//////////////////view my issued books details/////////////////////
+export const viewIssuedBooks = async(req,res)=>{
+    const {id} = req.params
+    try{
+        const issuedBooks = await bookModel.find({Student_ID:id},{
+            Title:1,
+            Author:1,
+            Genre:1,
+            SubGenre:1,
+            Issue_date:1,
+            Return_date:1
+        })
+        if(issuedBooks){
+            res.status(200).json({
+                success:true,
+                message: "Issued book details are fetched successfully",
+                data: issuedBooks
+            })
+        }
+        else{
+            res.status(400).json({
+                success: false,
+                message: "Something went erong",
+            })
+        }
+    }
+    catch(error){
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+}
 }

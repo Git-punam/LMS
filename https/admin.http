@@ -58,9 +58,22 @@ Content-Type: application/json
 
 ###
 
-//////////////////delete boo details/////////////////////
+//////////////////delete book details/////////////////////
 
 DELETE http://localhost:4000/api/admin/delete-book/6320a5730d0ebc30142b45b0
 Content-Type: application/json
+
+###
+
+
+///////////////////issue book/////////////////////////////
+PUT http://localhost:4000/api/admin/issue-book/6320a5010d0ebc30142b45ac
+Content-Type: application/json
+
+{
+  "Issue_date" : "15-09-2022", 
+  "Return_date" : "26-09-2022",
+  "Student_ID" : "6322bb2eed293de86ffe852d"
+}
 
 ###

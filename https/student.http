@@ -1,3 +1,31 @@
+
+///////////////Student Sign up/////////////////////////////
+POST http://localhost:4000/api/student/signup
+Content-Type: application/json
+
+{
+  "name": "Hello Student",
+  "username": "helloStudent",
+  "password": "helloStudent",
+  "email" : "helloStudent@gmail.com",
+  "stream": "CSE",
+  "year" : 4,
+  "roll": 2022001
+}
+
+###
+
+//////////////////////////////////login API//////////////////////////////////////
+POST http://localhost:4000/api/student/login
+Content-Type: application/json
+
+{
+    "username" : "helloStudent",
+    "password" : "helloStudent"
+}
+
+###
+
 //////////////////////////////view all book details///////////////////////////
 GET http://localhost:4000/api/student/view-all-books
 Content-Type: application/json
@@ -25,40 +53,8 @@ Content-Type: application/json
 
 ###
 
-////////////////////////////add new book details/////////////////////////////
-POST http://localhost:4000/api/add-new-book
-Content-Type: application/json
-
-{
-  "Title": "Programming Collective Intelligence",
-  "Author": "Toby Segaran",
-  "Genre": "tech",
-  "SubGenre": " ",
-  "Height": "",
-  "Publisher": "O'Reilly Media, Inc."
-}
-
-###
-
-
-/////////////////////////////view book details selected by ID/////////////////////
-GET http://localhost:4000/api/view-selected-book/631b938ec6c691206a4c4bc1
-Content-Type: application/json
-
-###
-
-//////////////////////update old book details selected by ID/////////////////////
-PUT http://localhost:4000/api/update-old-book/631c0b4f0151d19acc0eae77
-Content-Type: application/json
-
-{
-    "SubGenre" : "machine learning"
-}
-
-###
-
-////////////////////delete a book selected by ID/////////////////////////////////
-DELETE http://localhost:4000/api/delete-book/631c1e90ddec4ae79e0b622e
+///////////////////////view my issued books/////////////////////
+GET http://localhost:4000/api/student/my-issued-books/6322bb2eed293de86ffe852d
 Content-Type: application/json
 
 ###

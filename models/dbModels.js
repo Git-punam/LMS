@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt'
 
 
 
-
 //model schema for student details
 const studentSchema = new mongoose.Schema({
     name: {type: String},
@@ -58,7 +57,6 @@ const booksSchema = new mongoose.Schema({
     SubGenre : {type: String},
     Height: {type : Number},
     Publisher:{type: String},
-    Stock:{type: Number, required:true},
     Issue_date:{type: String},
     Return_date:{type: String},
     Actual_date:{type: String},
