@@ -1,5 +1,5 @@
 
-///////////////Student Sign up/////////////////////////////
+//Student Sign up
 POST http://localhost:4000/api/student/signup
 Content-Type: application/json
 
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ###
 
-//////////////////////////////////login API//////////////////////////////////////
+//Student login
 POST http://localhost:4000/api/student/login
 Content-Type: application/json
 
@@ -26,34 +26,34 @@ Content-Type: application/json
 
 ###
 
-//////////////////////////////view all book details///////////////////////////
+//view all book details
 GET http://localhost:4000/api/student/view-all-books
 Content-Type: application/json
 
 
 ###
 
-////////////////////view books by genre/////////////////////////////
+//view books by genre
 GET http://localhost:4000/api/student/view-selected-book-genre/science
 Content-Type: application/json
 
 
 ###
 
-////////////////////view books by subgenre/////////////////////////////
+//view books by subgenre
 GET http://localhost:4000/api/student/view-selected-book-subgenre/economics
 Content-Type: application/json
 
 ###
 
-////////////////////view books by publisher/////////////////////////////
+//view books by publisher
 GET http://localhost:4000/api/student/view-selected-book-publisher/Penguin
 Content-Type: application/json
 
 
 ###
 
-///////////////////////view my issued books/////////////////////
+//view my issued books
 GET http://localhost:4000/api/student/my-issued-books/6322bb2eed293de86ffe852d
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIyYmIyZWVkMjkzZGU4NmZmZTg1MmQiLCJpYXQiOjE2NjMzMzc1MjgsImV4cCI6MTY2MzQyMzkyOH0.EVQtNymvdesJf1AYsFi5rpobupfqZQQz7fHg69nnnVI

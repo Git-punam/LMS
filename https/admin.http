@@ -1,4 +1,4 @@
-/////////////////////////signup API/////////////////
+//signup API
 POST http://localhost:4000/api/admin/signup
 Content-Type: application/json
 
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 ###
 
-//////////////////////////////////login API//////////////////////////////////////
+//login API
 POST http://localhost:4000/api/admin/login
 Content-Type: application/json
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 ###
 
 
-///////////////////////////////////add new book details////////////////////////////
+//add new book details
 POST http://localhost:4000/api/admin/add-new-book
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0NGY4NTg5OTMyMzQ3MTNkMTAiLCJpYXQiOjE2NjMzMzczNTEsImV4cCI6MTY2MzQyMzc1MX0.9OhLQUMYeqVJ_XYJEv2iPSGoednw5KilPz6J90NmOVY
@@ -48,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0N
 
 ###
 
-/////////////////////update book dtails//////////////////////////////////
+//update book dtails
 PUT http://localhost:4000/api/admin/update-old-book/6320977df858993234713d15
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0NGY4NTg5OTMyMzQ3MTNkMTAiLCJpYXQiOjE2NjMzMzczNTEsImV4cCI6MTY2MzQyMzc1MX0.9OhLQUMYeqVJ_XYJEv2iPSGoednw5KilPz6J90NmOVY
@@ -60,7 +60,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0N
 
 ###
 
-//////////////////delete book details/////////////////////
+//delete book details
 
 DELETE http://localhost:4000/api/admin/delete-book/6320a5730d0ebc30142b45b0
 Content-Type: application/json
@@ -69,7 +69,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0N
 ###
 
 
-///////////////////issue book/////////////////////////////
+//issue book
 PUT http://localhost:4000/api/admin/issue-book/6320a5010d0ebc30142b45ac
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0NGY4NTg5OTMyMzQ3MTNkMTAiLCJpYXQiOjE2NjMzMzczNTEsImV4cCI6MTY2MzQyMzc1MX0.9OhLQUMYeqVJ_XYJEv2iPSGoednw5KilPz6J90NmOVY

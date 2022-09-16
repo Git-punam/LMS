@@ -2,8 +2,11 @@ import {studentModel, bookModel} from '../models/dbModels.js'
 import { generateTokenStudent } from '../utils/generateToken.js'
 
 
-
-/////////////////////signup logic/////////////////////////////////////////////
+/**
+ * @description Student signup
+ * @route POST /api/student/signup
+ * @access public
+ */
 export const studentSignUp = async(req,res)=>{
     const {name, username, password, email, stream, year, roll} = req.body
     console.log(req.body);
@@ -35,8 +38,11 @@ export const studentSignUp = async(req,res)=>{
 }
 
 
-
-//////////////////////////login logic//////////////////////////////////////////////
+/**
+ * @description Student login
+ * @route POST /api/student/login
+ * @access public
+ */
 export const studentLogin = async(req,res)=>{
     const {username, password} = req.body
     try{
@@ -73,8 +79,11 @@ export const studentLogin = async(req,res)=>{
 }
 
 
-
-////////////////////////////view all books/////////////////////////////////////
+/**
+ * @description View all books
+ * @route GET /api/student/view-all-books
+ * @access public
+ */
 export const viewAllBooks = async(req,res)=>{
         const allBooks = await bookModel.find({},
             {Title:1,
@@ -99,7 +108,11 @@ export const viewAllBooks = async(req,res)=>{
     }
 }
 
-////////////////////////////view all books by genre/////////////////////////
+/**
+ * @description Filter books by Genre
+ * @route GET /api/student/view-selected-book-genre/:genre
+ * @access public
+ */
 export const viewByGenre = async(req,res)=>{
     const {genre} = req.params
     const allByGenre = await bookModel.find({Genre:genre},
@@ -109,7 +122,6 @@ export const viewByGenre = async(req,res)=>{
         SubGenre :1,
         Publisher:1})
     try{
-        // console.log(allByGenre);
     if(allByGenre){
         res.status(200).json({
             success: true,
@@ -126,7 +138,13 @@ catch(error){
 }
 }
 
-////////////////////////////view all books by SubGenre/////////////////////////////////////
+
+
+/**
+ * @description Filter books by SubGenre
+ * @route GET /api/student/view-selected-book-subgenre/:subgenre
+ * @access public
+ */
 export const viewBySubgenre = async(req,res)=>{
     const {subgenre} = req.params
     console.log(req.params);
@@ -153,7 +171,12 @@ catch(error){
 }
 }
 
-////////////////////////////view all books by SubGenre/////////////////////////////////////
+
+/**
+ * @description Filter books by Publisher
+ * @route GET /api/student/view-selected-book-publisher/:publisher
+ * @access public
+ */
 export const viewByPublisher = async(req,res)=>{
     const { publisher } = req.params
     const allByPublisher = await bookModel.find({Publisher:publisher},
@@ -179,7 +202,11 @@ catch(error){
     }
 }
 
-//////////////////view my issued books details/////////////////////
+/**
+ * @description View all issued book details
+ * @route GET /api/student/my-issued-books/:id
+ * @access private
+ */
 export const viewIssuedBooks = async(req,res)=>{
     const {id} = req.params
     try{

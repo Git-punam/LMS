@@ -1,7 +1,11 @@
 import {adminModel, bookModel, studentModel} from '../models/dbModels.js'
 import { generateTokenAdmin, } from '../utils/generateToken.js'
 
-/////////////////////signup logic/////////////////////////////////////////////
+/**
+ * @description Admin signup
+ * @route POST /api/admin/signup
+ * @access public
+ */
 export const adminSignUp = async(req,res)=>{
     const {name, username, password, email}=req.body
         try{
@@ -31,7 +35,12 @@ export const adminSignUp = async(req,res)=>{
     }
 }
 
-/////////////////////////////login logic////////////////////////////////////
+
+/**
+ * @description Admin login
+ * @route POST /api/admin/login
+ * @access public
+ */
 export const adminLogin = async(req,res)=>{
     const { username, password } = req.body
         try{
@@ -66,7 +75,12 @@ export const adminLogin = async(req,res)=>{
     }
 }
 
-///////////////////////////////add-new-book///////////////////////////////////////
+
+/**
+ * @description Add new book details
+ * @route POST /api/admin/add-new-book
+ * @access private
+ */
 export const addNewBook = async(req,res)=>{
     const {Title, Author, Genre, SubGenre, Height, Publisher}= req.body
     try{
@@ -89,7 +103,12 @@ catch(error){
 }
 }
 
-////////////////////////////////update a single book details/////////////////////
+
+/**
+ * @description Update book details
+ * @route PUT /api/admin/update-old-book/:id
+ * @access private
+ */
 export const updateOldBook = async(req,res)=>{
     const {id} = req.params
     const {Title, Author, Genre, SubGenre, Height, Publisher} = req.body
@@ -119,7 +138,13 @@ catch(error){
 }
 }
 
-/////////////////////////////////////issue a book////////////////////////
+
+
+/**
+ * @description Issue book 
+ * @route PUT /api/admin/issue-book/:id
+ * @access private
+ */
 export const issueBook = async(req,res)=>{
     const {id} = req.params
     const {Issue_date, Actual_date, Student_ID } = req.body
@@ -130,40 +155,50 @@ export const issueBook = async(req,res)=>{
         year:1,
         roll :1
         })
+
     // Return_date calculation
-        let dd = 7 + Number(Issue_date.substr(0,2));//'substr' extract substring from position 0 with length=2
-        let mm = Number(Issue_date.substr(3,2));//'substr' extract substring from position 3 with length=2
-        let yyyy = Number(Issue_date.substr(6));//'substr' extract rest of the substring from position 6
+    //Issue_date format:dd-mm-yyyy
+        let dd = 7 + Number(Issue_date.substr(0,2));//'substr(0,2)' extract substring from position 0 with length=2
+        let mm = Number(Issue_date.substr(3,2));//'substr(3,2)' extract substring from position 3 with length=2
+        let yyyy = Number(Issue_date.substr(6));//'substr(6)' extract rest of the substring from position 6
+        
+        //object for months having 31 days
         const arr31 = {
             1 : "january",
             3 : "march",
-            5:  "may",//object for months having 31 days
+            5:  "may",
             7:  "july",
             8: "august",
             10: "october",
             12 : "december"
         }
+
+        // object for months having 30 days
         const arr30 = {
             4 : "april",
-            6 : "june",// object for months having 30 days
+            6 : "june",
             9:  "september",
             11:  "november",
         }
+
+        //if the month is apr/jun/sep/nov
         if(Object.keys(arr30).includes(mm.toString())){
-            if(Math.floor(dd/30) > 0) mm=mm+1;
+            if(Math.floor(dd/30) > 0) mm = mm + 1;
             dd = dd % 30;
-        }      
+        }   
+        //if the month is jan/mar/may/jul/aug/oct/dec  
         else if(Object.keys(arr31).includes(mm.toString())) {
-            if(Math.floor(dd/31) > 0) mm=mm+1;
+            if(Math.floor(dd/31) > 0) mm = mm + 1;
             dd = dd % 31;
         }       
-        else {//checking leap year or not
+        else {
+            //checking leap year or not
                 if( yyyy % 4 == 0 ) {
-                    if( Math.floor(dd/29)>0) mm=mm+1;
+                    if( Math.floor(dd/29)>0) mm = mm + 1;
                     dd = dd % 29;
                 }
                 else { 
-                    if( Math.floor(dd/28)>0) mm=mm+1;
+                    if( Math.floor(dd/28)>0) mm = mm + 1;
                     dd = dd % 28;
                 }
         }
@@ -198,7 +233,13 @@ catch(error){
 }
 }
 
-///////////////////////////////////delete a selected book details////////////////////
+
+
+/**
+ * @description Delete book details
+ * @route DELETE /api/admin/delete-book/:id
+ * @access private
+ */
 export const deleteBook = async(req,res)=>{
     const {id} = req.params
     try{

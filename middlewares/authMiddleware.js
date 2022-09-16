@@ -5,7 +5,7 @@ import env from "dotenv";
 env.config();
 
 
-///////////////for admin authorization///////////
+//Admin authorization
 export const authMiddlewareAdmin = async (req, res, next) => {
   let token;
   try {
@@ -51,7 +51,7 @@ export const authMiddlewareAdmin = async (req, res, next) => {
 
 
 
-///////////////////for student authorization///////////
+//Student authorization
 export const authMiddlewareStudent = async (req, res, next) => {
     let token;
     try {
