@@ -137,11 +137,11 @@ export const issueBook = async(req,res)=>{
         const arr31 = {
             1 : "january",
             3 : "march",
-            5:  "april",//object for months having 31 days
-            7:  "may",
-            8: "july",
-            10: "august",
-            12 : "october"
+            5:  "may",//object for months having 31 days
+            7:  "july",
+            8: "august",
+            10: "october",
+            12 : "december"
         }
         const arr30 = {
             4 : "april",

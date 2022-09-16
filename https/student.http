@@ -56,5 +56,7 @@ Content-Type: application/json
 ///////////////////////view my issued books/////////////////////
 GET http://localhost:4000/api/student/my-issued-books/6322bb2eed293de86ffe852d
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIyYmIyZWVkMjkzZGU4NmZmZTg1MmQiLCJpYXQiOjE2NjMzMzc1MjgsImV4cCI6MTY2MzQyMzkyOH0.EVQtNymvdesJf1AYsFi5rpobupfqZQQz7fHg69nnnVI
+
 
 ###
