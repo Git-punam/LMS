@@ -28,7 +28,7 @@ POST http://localhost:4000/api/admin/login
 Content-Type: application/json
 
 {
-    "username" : "allbook",
+    "username" : "heyworld",
     "password" : "bookdetails"
 }
 
@@ -38,30 +38,19 @@ Content-Type: application/json
 
 
 
+
+
+
 //update admin profile
 PUT http://localhost:4000/api/admin/update-profile/6320966ff858993234713d12
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY2ZmY4NTg5OTMyMzQ3MTNkMTIiLCJpYXQiOjE2NjM1NjI1MTYsImV4cCI6MTY2MzY0ODkxNn0.oa8Oaei5mSjhy4yox8K0aMxNpBUmWyHQvbl1zStNjhA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0NGY4NTg5OTMyMzQ3MTNkMTAiLCJpYXQiOjE2NjM1NjY4NDksImV4cCI6MTY2MzY1MzI0OX0.yI4fpPpnJpkmzbSGZWdM6KkIY6q5FqsII67YLzqpXfM
 
 {
-  "password" : "helloworld"
+  "name" : "hello world"
 }
 
 ###
-
-
-//return book
-PUT http://localhost:4000/api/admin/return-book/6320977df858993234713d15
-Content-Type: application/json
-
-{
-  "Actual_date" : "22-09-2022"
-}
-
-###
-
-
-
 
 
 
@@ -93,7 +82,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0N
 ###
 
 //delete book details
-
 DELETE http://localhost:4000/api/admin/delete-book/6320a5730d0ebc30142b45b0
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0NGY4NTg5OTMyMzQ3MTNkMTAiLCJpYXQiOjE2NjMzMzczNTEsImV4cCI6MTY2MzQyMzc1MX0.9OhLQUMYeqVJ_XYJEv2iPSGoednw5KilPz6J90NmOVY
@@ -102,13 +90,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0N
 
 
 //issue book
-PUT http://localhost:4000/api/admin/issue-book/6320a5010d0ebc30142b45ac
+PUT http://localhost:4000/api/admin/issue-book/6320977df858993234713d15
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0NGY4NTg5OTMyMzQ3MTNkMTAiLCJpYXQiOjE2NjMzMzczNTEsImV4cCI6MTY2MzQyMzc1MX0.9OhLQUMYeqVJ_XYJEv2iPSGoednw5KilPz6J90NmOVY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY0NGY4NTg5OTMyMzQ3MTNkMTAiLCJpYXQiOjE2NjM1Njg2ODgsImV4cCI6MTY2MzY1NTA4OH0.jnqK0TJ1KvTtApwC1XCXzJwKag92z4tXcuVD3WsWpi4
 
 {
   "Issue_date" : "27-02-2000", 
   "Student_ID" : "6322bb2eed293de86ffe852d"
+}
+
+###
+
+//return book
+PUT http://localhost:4000/api/admin/return-book/6320977df858993234713d15
+Content-Type: application/json
+
+{
+  "Actual_return_date" : "06-03-2000"
 }
 
 ###

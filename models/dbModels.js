@@ -59,7 +59,7 @@ const booksSchema = new mongoose.Schema({
     Publisher:{type: String},
     Issue_date : {type: String},
     Return_date: {type: String},
-    Actual_date: {type: String},
+    Actual_return_date: {type: String},
     Charges_Rs:{type:Number},
     Student_ID:{type:String} 
 },

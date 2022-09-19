@@ -90,7 +90,7 @@ export const studentLogin = async(req,res)=>{
     const {studentId} = req.params
     try{
         let { name, username, password, email, stream, year, roll } = req.body
-        password = await bcrypt.hash('password',10)
+        if (password) password = await bcrypt.hash('password',10);
         const findTheStudent = await studentModel.findByIdAndUpdate({_id:studentId},{
             name, username, password, email, stream, year, roll
         })
@@ -243,7 +243,7 @@ catch(error){
 
 /**
  * @description View all issued book details
- * @route GET /api/student/my-issued-books/:id
+ * @route GET /api/student/my-issued-books/:bookId
  * @access private
  */
 export const viewIssuedBooks = async(req,res)=>{
@@ -255,7 +255,9 @@ export const viewIssuedBooks = async(req,res)=>{
             Genre:1,
             SubGenre:1,
             Issue_date:1,
-            Return_date:1
+            Return_date:1,
+            Actual_return_date:1,
+            Charges_Rs:1
         })
         if(issuedBooks){
             res.status(200).json({
