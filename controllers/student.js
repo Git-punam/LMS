@@ -1,5 +1,6 @@
 import {studentModel, bookModel} from '../models/dbModels.js'
 import { generateTokenStudent } from '../utils/generateToken.js'
+import bcrypt from 'bcrypt'
 
 
 /**
@@ -74,6 +75,44 @@ export const studentLogin = async(req,res)=>{
         res.status(400).json({
             success: false,
             message: error.message
+        })
+    }
+}
+
+
+
+/**
+ * @description Update profile details
+ * @route POST /api/student/update-profile/:studentId
+ * @access private
+ */
+ export const updateStudentProfile = async(req,res)=>{
+    const {studentId} = req.params
+    try{
+        let { name, username, password, email, stream, year, roll } = req.body
+        password = await bcrypt.hash('password',10)
+        const findTheStudent = await studentModel.findByIdAndUpdate({_id:studentId},{
+            name, username, password, email, stream, year, roll
+        })
+        if(findTheStudent){
+            res.status(200).json({
+                success : true,
+                message: "profile updated successfully",
+                data: findTheStudent
+            })
+        }
+        else{
+            res.status(400).json({
+                success : true,
+                message : "something went wrong"
+            })
+        }
+    }
+    catch(error){
+        res.status(400).json({
+            success: true,
+            message : error.message
+
         })
     }
 }
@@ -208,9 +247,9 @@ catch(error){
  * @access private
  */
 export const viewIssuedBooks = async(req,res)=>{
-    const {id} = req.params
+    const {bookId} = req.params
     try{
-        const issuedBooks = await bookModel.find({Student_ID:id},{
+        const issuedBooks = await bookModel.find({Student_ID:bookId},{
             Title:1,
             Author:1,
             Genre:1,

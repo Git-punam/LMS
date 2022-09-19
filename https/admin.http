@@ -28,11 +28,43 @@ POST http://localhost:4000/api/admin/login
 Content-Type: application/json
 
 {
-    "username" : "heyworld",
-    "password" : "heyhello"
+    "username" : "allbook",
+    "password" : "bookdetails"
 }
 
 ###
+
+
+
+
+
+//update admin profile
+PUT http://localhost:4000/api/admin/update-profile/6320966ff858993234713d12
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIwOTY2ZmY4NTg5OTMyMzQ3MTNkMTIiLCJpYXQiOjE2NjM1NjI1MTYsImV4cCI6MTY2MzY0ODkxNn0.oa8Oaei5mSjhy4yox8K0aMxNpBUmWyHQvbl1zStNjhA
+
+{
+  "password" : "helloworld"
+}
+
+###
+
+
+//return book
+PUT http://localhost:4000/api/admin/return-book/6320977df858993234713d15
+Content-Type: application/json
+
+{
+  "Actual_date" : "22-09-2022"
+}
+
+###
+
+
+
+
+
+
 
 
 //add new book details

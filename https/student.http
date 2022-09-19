@@ -26,6 +26,18 @@ Content-Type: application/json
 
 ###
 
+
+//update profile details
+PUT http://localhost:4000/api/student/update-profile/6322bb2eed293de86ffe852d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIyYmIyZWVkMjkzZGU4NmZmZTg1MmQiLCJpYXQiOjE2NjM1NjM1NDIsImV4cCI6MTY2MzY0OTk0Mn0.LMVViz0wQzAVq7jMx5U4oATex16CcgWqdIi5w_U7YUo
+
+{
+  "name" : "Me Student"
+}
+
+###
+
 //view all book details
 GET http://localhost:4000/api/student/view-all-books
 Content-Type: application/json

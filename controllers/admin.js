@@ -1,5 +1,6 @@
 import {adminModel, bookModel, studentModel} from '../models/dbModels.js'
-import { generateTokenAdmin, } from '../utils/generateToken.js'
+import { generateTokenAdmin } from '../utils/generateToken.js'
+import bcrypt from 'bcrypt'
 
 /**
  * @description Admin signup
@@ -77,6 +78,44 @@ export const adminLogin = async(req,res)=>{
 
 
 /**
+ * @description Update profile details
+ * @route PUT /api/admin/update-profile/:adminId
+ * @access private
+ */
+export const updateAdminProfile = async(req,res)=>{
+    const { adminId} = req.params
+    try{
+        let { name, username, password, email } = req.body
+        password = await bcrypt.hash(password,10)
+        const findTheAdmin = await adminModel.findByIdAndUpdate({_id:adminId},{
+            name, username, password, email
+        })
+        if(findTheAdmin){
+            res.status(200).json({
+                success : true,
+                message: "profile updated successfully",
+                data: findTheAdmin
+            })
+        }
+        else{
+            res.status(400).json({
+                success : false,
+                message : "something went wrong"
+            })
+        }
+    }
+    catch(error){
+        res.status(400).json({
+            success: false,
+            message : error.message
+        })
+    }
+}
+
+
+
+
+/**
  * @description Add new book details
  * @route POST /api/admin/add-new-book
  * @access private
@@ -106,14 +145,14 @@ catch(error){
 
 /**
  * @description Update book details
- * @route PUT /api/admin/update-old-book/:id
+ * @route PUT /api/admin/update-old-book/:bookId
  * @access private
  */
 export const updateOldBook = async(req,res)=>{
-    const {id} = req.params
+    const {bookId} = req.params
     const {Title, Author, Genre, SubGenre, Height, Publisher} = req.body
     try{
-        const updateBook = await bookModel.findByIdAndUpdate({_id:id},{
+        const updateBook = await bookModel.findByIdAndUpdate({_id:bookId},{
             Title, Author, Genre, SubGenre, Height, Publisher, Issue_date, Return_date, Actual_date, Charges_Rs, Student_ID
         })
         if(updateBook){
@@ -142,12 +181,12 @@ catch(error){
 
 /**
  * @description Issue book 
- * @route PUT /api/admin/issue-book/:id
+ * @route PUT /api/admin/issue-book/:bookId
  * @access private
  */
 export const issueBook = async(req,res)=>{
-    const {id} = req.params
-    const {Issue_date, Actual_date, Student_ID } = req.body
+    const { bookId } = req.params
+    const { Issue_date, Student_ID } = req.body
     try{
         const studentDetails = await studentModel.findOne({_id:Student_ID},{
         name:1,
@@ -209,7 +248,7 @@ export const issueBook = async(req,res)=>{
         let Return_date = ddS + '-'+ mmS + '-' + yyS 
         
         
-        const issueBook = await bookModel.findByIdAndUpdate({_id:id},{
+        const issueBook = await bookModel.findByIdAndUpdate({_id:bookId},{
             Issue_date, Return_date, Actual_date, Student_ID})
         if(issueBook){
             res.status(200).json({
@@ -235,9 +274,82 @@ catch(error){
 
 
 
+
+
+
+
+
+
+
+/**
+ * @description Return book 
+ * @route PUT /api/admin/return-book/:bookId
+ * @access private
+ */
+ export const returnBook = async(req,res)=>{
+    const {bookId} = req.params
+    const { Actual_date } = req.body
+    console.log(Actual_date);
+    try{
+            const findTheBook = await bookModel.findOne({_id:bookId},{Issue_date:1})
+            console.log(findTheBook.Issue_date);
+            console.log(typeof(findTheBook.Issue_date));
+            // if(findTheBook){
+            // Charges_rs calculation
+            //Actual_date format:dd-mm-yyyy
+    //         let yyyyIssue = Number(findTheBook.Issue_date.substr(6));//'substr(6)' extract rest of the substring from position 6
+    //         let yyyyActual = Number(Actual_date.substr(6));//'substr(6)' extract rest of the substring from position 6
+    //         let dd = 7 + Number(Issue_date.substr(0,2));//'substr(0,2)' extract substring from position 0 with length=2
+    //         let mm = Number(Issue_date.substr(3,2));//'substr(3,2)' extract substring from position 3 with length=2
+    //         //book returned in the same year
+    //         if(yyyyActual-yyyyIssue==0){
+    //         }
+            
+    //         const issueBook = await bookModel.findByIdAndUpdate({_id:id},{
+    //             Issue_date, Return_date, Actual_date, Student_ID})
+    //         if(issueBook){
+    //             res.status(200).json({
+    //                 success : true,
+    //                 message : "The selected book is issued successfully",
+    //                 data : studentDetails
+    //             })
+    //         }
+    //         else{
+    //             res.status(400).json({
+    //                 status: false,
+    //                 messgae : "The selected book does not exist"
+    //             })
+    //         }
+    }
+    catch(error){
+        res.status(400).json({
+            success:false,
+            message: error.message
+        })
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * @description Delete book details
- * @route DELETE /api/admin/delete-book/:id
+ * @route DELETE /api/admin/delete-book/:bookId
  * @access private
  */
 export const deleteBook = async(req,res)=>{
