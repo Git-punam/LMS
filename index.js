@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import {dbConnect} from './dbConfig/db.js'
 import routes from './routes/routes.js'
+import { notFound, errorHandler } from './middlewares/customMiddlewares.js'
 
 const app = express()
 
@@ -20,6 +21,9 @@ app.get('/', (req,res)=>{
 })
 
 app.use('/api', routes)
+
+app.use(notFound)
+app.use(errorHandler)
 
 app.listen(4000,()=>{
     try{

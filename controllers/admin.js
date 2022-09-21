@@ -242,8 +242,16 @@ catch(error){
             let Charges_Rs = 0;
             // console.log(findTheBook.Charges_Rs);
             if(findTheBook) 
-            {Charges_Rs = fineCalc(findTheBook.Return_date, Actual_return_date);
-                console.log(Charges_Rs);}
+            {
+                Charges_Rs = fineCalc(findTheBook.Return_date, Actual_return_date);
+                if(Charges_Rs == -1)
+                {
+                    res.status(400).json({
+                        success : false,
+                        message : "Invalid Actual_return_date entered"
+                    })
+                }
+            }
             else{
                 res.status(400).json({
                     success : false,

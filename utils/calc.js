@@ -33,7 +33,7 @@ const arr30 = {
 
 /**
  * @description Return_date calculation
- * @param Issue_date, Return_date(this is empty)
+ * @param Issue_date, Return_date(empty)
  * @Issue_date_format dd-mm-yyyy
  */
 export const returnDateCalc = (Issue_date,Return_date)=>{
@@ -76,7 +76,7 @@ export const returnDateCalc = (Issue_date,Return_date)=>{
 
 /**
  * @description Late fine/charges calculation
- * @param Return_date, Actual_return_date, Charges_rs(empty)
+ * @param Return_date, Actual_return_date
  * @Return_date_format dd-mm-yyyy
  * @Actual_return_date_format dd-mm-yyyy
  */
@@ -97,9 +97,9 @@ export const fineCalc = (Return_date, Actual_return_date)=>{
 
     
     function countRemainingDays(val){
-        //if the current month is apr/jun/sep/nov in Return_date
+        //if the current month is apr/jun/sep/nov
         if(arr30.arr30Method(val)) Charges_Rs = 30 - ddReturn;
-        //if the current month is jan/mar/may/jul/aug/oct/dec in Return_date 
+        //if the current month is jan/mar/may/jul/aug/oct/dec
         else if(arr31.arr31Method(val)) Charges_Rs = 31 - ddReturn;
         else 
         {
@@ -154,6 +154,7 @@ export const fineCalc = (Return_date, Actual_return_date)=>{
             if( i % 4 == 0 ) yCountLeap++;
             else yCountLeapNot++;
         }
+        //number of months calculated upto prev month of the actual returned month
         for(var i = 1; i < mmActual; i++)
         {
             monthCountTotal(i)
